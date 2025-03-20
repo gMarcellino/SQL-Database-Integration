@@ -29,15 +29,15 @@ The databases involved in this study are relational SQL databases that were pre-
 The integration of the two databases is performed within Microsoft SQL Server, where the ifcSQL database resides. This enables efficient synchronization between the IFC database and the sensor database.  
 
 To achieve this, two SQL scripts are executed in MSSQL Server:  
-1. **`MapTable_Creation.sql`** – Creates mapping tables to link the IFC model with sensor data.  
-2. **`DatabaseUpdate.sql`** – Updates the IFC database with the latest sensor readings.  
+1. `MapTable_Creation.sql` – Creates mapping tables to link the IFC model with sensor data.  
+2. `DatabaseUpdate.sql` – Updates the IFC database with the latest sensor readings.  
 The scripts are reported into the repository.
 
 An overview of the general connection between the scripts is shown:
 IMMAGINE
 
 ### Phase 3: Ifc update 
-To fully automate the data exchange process, a batch script is used.
+To fully automate the data exchange process, a batch script `PCtoServer.bat` is used.
 This file contains a series of commands executed sequentially, namely MapTable_Creation.sql, DatabaseUpdate.sql, and finally the C# script SQLtoIFC. The file is reported in the repository.
 
 ### Phase 4: Updated IFC Model
@@ -46,5 +46,22 @@ At the end of the process, the IFC file is updated and stored on the server, rea
 
 ---
 
+
+## Repository Contents
+This repository includes the following files:
+
+- **SQL Scripts**:
+`MapTable_Creation.sql` – Mapping table creation.
+`DatabaseUpdate.sql` – Database synchronization.
+- **Batch File**:
+`PCtoServer.bat` - Automates the execution of all scripts.
+
+How to Use
+Ensure that Microsoft SQL Server and MySQL are installed and configured.
+Run the SQL scripts in Microsoft SQL Server.
+Execute the batch script (run_framework.bat).
+The updated IFC file will be generated and stored on the server.
+License
+This framework is distributed under the MIT License. See LICENSE for details.
 
 
