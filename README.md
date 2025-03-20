@@ -34,7 +34,7 @@ To achieve this, two SQL scripts are executed in MSSQL Server:
 The scripts are reported into the repository.
 
 An overview of the general connection between the scripts is shown:
-![Framework](https://github.com/gMarcellino/SQL-Database-Integration/blob/main/image/Framework.jpg)
+<img src="https://github.com/gMarcellino/SQL-Database-Integration/blob/main/image/Framework.jpg" alt="Framework" width="100" />
 
 ### Phase 3: Ifc update 
 To fully automate the data exchange process, a batch script `PCtoServer.bat` is used.
