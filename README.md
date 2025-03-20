@@ -64,5 +64,36 @@ This repository includes the following files:
 The updated IFC file will be generated and stored on the server.
 
 
+---
+
+## Other applications
+The scripts provided are specific to the case study. However, they can be easily modified to be applied to other areas (e.g., energy, degradation, etc.).
+Below are some changes to apply for generalization:
+
+1. **MAPTABLE_CREATION.SQL**
+Line 20
+Modify the ID with the one generated in the SelectProject table of the ifcSQL script.
+Line 31-42
+You can insert all the columns you need, each for the respective property you want to report. For each property, it is important to print both the TID (TypeId) and the value.
+Line 60
+You can replace “IFCSENSOR” with any other IFC class whose properties you want to link. For example, IFCWALL.
+Line 135
+You can select the relevant Psets based on your needs.
+Line 158-167
+It is necessary to modify the properties contained within the Psets if they were changed in the previous section.
+Line 173-181 and 187-195
+The tables must be kept if the elements are recognized via AssetIdentifier and if the date information is required. Additional tables can be added, constructed in a similar way.
+Line 208
+It is necessary to modify the properties contained within the Psets if they were modified in lines 158-167.
+
+2. **DATABASEUPDATE.SQL**
+Line 20
+Modify the ID with the one generated in the SelectProject table of the ifcSQL script.
+Line 26-34
+You need to modify the columns of the SENSORTABLE based on the structure of the database table you want to link. Additionally, you need to insert the name of the database.
+Keep lines 31-34 if you want the most recent data.
+Line 42-56
+In these lines, the connection between MapTable and SensorTable is made using the same AssetIdentifier and the same property names. You can modify this.
+
 
 
