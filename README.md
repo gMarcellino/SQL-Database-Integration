@@ -67,7 +67,7 @@ The updated IFC file will be generated and stored on the server.
 ---
 
 ## Other applications
-The scripts provided are specific to the case study. However, they can be easily modified to be applied to other areas (e.g., energy, degradation, etc.).
+The scripts provided are specific to the case study. However, they can be easily modified to be applied to other areas (e.g., energy, decay, etc.).
 Below are some changes to apply for generalization:
 
 1. **MAPTABLE_CREATION.SQL**
