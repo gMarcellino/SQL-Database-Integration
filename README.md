@@ -56,12 +56,12 @@ This repository includes the following files:
 - **Batch File**:
 `PCtoServer.bat` - Automates the execution of all scripts.
 
-How to Use
-Ensure that Microsoft SQL Server and MySQL are installed and configured.
-Run the SQL scripts in Microsoft SQL Server.
-Execute the batch script (run_framework.bat).
+## How to Use
+1. Ensure that Microsoft SQL Server and MySQL are installed and configured.
+2. Run the SQL scripts in Microsoft SQL Server.
+3. Execute the batch script.
 The updated IFC file will be generated and stored on the server.
-License
-This framework is distributed under the MIT License. See LICENSE for details.
+
+
 
 
