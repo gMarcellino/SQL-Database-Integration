@@ -1,10 +1,11 @@
 # SQL Database Integration
 
 ## General Information  
-This research proposes a framework for integrating data between SQL databases from different platforms, such as **Microsoft SQL Server (MSSQL)** and **MySQL**. The goal is to ensure system compatibility and facilitate the exchange and synchronization of information, particularly in Building Information Modeling (BIM) and other sources.  
+This research proposes a framework for integrating data between SQL databases from different platforms, such as Microsoft SQL Server (MSSQL) and MySQL. The goal is to ensure system compatibility and facilitate the exchange and synchronization of information, particularly in Building Information Modeling (BIM) and other sources.  
 
 ## Case Study  
-The proposed framework enables the synchronization of an **IFC-based database** (generated using the [ifcSQL](https://github.com/IfcSharp/IfcSQL) project) in **MSSQL Server** with an **external MySQL database** that stores real-time SHM sensor data. The scripts provided in this repository are part of the framework, which is detailed in a conference paper.  
+The proposed framework enables the synchronization of an IFC-based database (generated using the [ifcSQL](https://github.com/IfcSharp/IfcSQL) project) in MSSQL Server with an external MySQL database that stores real-time SHM sensor data. 
+The scripts provided in this repository are part of the framework, which is detailed in a conference paper.  
 
 ## Objectives  
 This work aims to develop a framework that integrates **real-time sensor data with BIM using the IFC standard**. The research focuses on utilizing **relational SQL databases** across different platforms and establishing seamless communication between them. The **IFC communication standard** serves as both the starting and ending point for managing and visualizing information.  
