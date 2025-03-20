@@ -14,7 +14,7 @@ This work aims to develop a framework that integrates real-time sensor data with
 
 ## Framework Overview  
 The framework consists of the following four phases:  
-<img src="https://github.com/gMarcellino/SQL-Database-Integration/blob/main/image/Framework.jpg" alt="Framework" width="600" margin-bottom:"0rem" />
+<img src="https://github.com/gMarcellino/SQL-Database-Integration/blob/main/image/Framework.jpg" alt="Framework" width="600" />
 
 ### Phase 1: Database Analysis  
 The databases involved in this study are relational SQL databases that were pre-generated using external scripts (not part of this study).  
