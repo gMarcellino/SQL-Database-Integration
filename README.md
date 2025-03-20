@@ -1,7 +1,7 @@
-# SQL Database Integration Framework for IFC-Based BIM and SHM Systems  
+# SQL Database Integration
 
 ## General Information  
-This research proposes a framework for integrating data between SQL databases from different platforms, such as **Microsoft SQL Server (MSSQL)** and **MySQL**. The goal is to ensure system compatibility and facilitate the exchange and synchronization of information, particularly in **Building Information Modeling (BIM)** and **Structural Health Monitoring (SHM)** applications.  
+This research proposes a framework for integrating data between SQL databases from different platforms, such as **Microsoft SQL Server (MSSQL)** and **MySQL**. The goal is to ensure system compatibility and facilitate the exchange and synchronization of information, particularly in Building Information Modeling (BIM) and other sources.  
 
 ## Case Study  
 The proposed framework enables the synchronization of an **IFC-based database** (generated using the [ifcSQL](https://github.com/IfcSharp/IfcSQL) project) in **MSSQL Server** with an **external MySQL database** that stores real-time SHM sensor data. The scripts provided in this repository are part of the framework, which is detailed in a conference paper.  
