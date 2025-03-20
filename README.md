@@ -34,7 +34,7 @@ To achieve this, two SQL scripts are executed in MSSQL Server:
 The scripts are reported into the repository.
 
 An overview of the general connection between the scripts is shown:
-IMMAGINE
+<img src="https://github.com/gMarcellino/SQL-Database-Integration/blob/main/image/Map.jpeg" alt="Map" width="600" />
 
 
 ### Phase 3: Ifc update 
