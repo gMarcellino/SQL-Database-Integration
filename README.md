@@ -14,7 +14,7 @@ This work aims to develop a framework that integrates real-time sensor data with
 
 ## Framework Overview  
 The framework consists of the following four phases:  
-IMMAGINE
+<img src="https://github.com/gMarcellino/SQL-Database-Integration/blob/main/image/Framework.jpg" alt="Framework" width="600" />
 
 ### Phase 1: Database Analysis  
 The databases involved in this study are relational SQL databases that were pre-generated using external scripts (not part of this study).  
@@ -34,7 +34,8 @@ To achieve this, two SQL scripts are executed in MSSQL Server:
 The scripts are reported into the repository.
 
 An overview of the general connection between the scripts is shown:
-<img src="https://github.com/gMarcellino/SQL-Database-Integration/blob/main/image/Framework.jpg" alt="Framework" width="600" />
+IMMAGINE
+
 
 ### Phase 3: Ifc update 
 To fully automate the data exchange process, a batch script `PCtoServer.bat` is used.
