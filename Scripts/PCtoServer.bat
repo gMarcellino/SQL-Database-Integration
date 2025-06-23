@@ -94,6 +94,8 @@ if exist "%EXE_FILE%" (
 
 "%WINSCP_PATH%" ^
   /command ^
+  "option batch on" ^
+  "option confirm off" ^
   "open ftp://%USERNAME%:%PASSWORD%@%SERVER_HOST%:%PORTA%" ^
   "put %FILE_LOCAL% %FILE_REMOTE%" ^
   "exit"
