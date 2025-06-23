@@ -1,37 +1,82 @@
-:: GENERAL INFORMATION
-
-:: This script is used to automate the process of updating the IFC file on the server.
-:: Some of the files are from ifcSQL project, so the path is set to the project folder.
-
-:: In the script are used some programs and tools that must be installed on the machine or similar (Winscp, Visual Studio, etc.). 
-
-
 @echo off
 
+:: ========================================================================
+:: GENERAL INFORMATION
+::
+:: This script automates the process of updating an IFC file on a server.
+:: It uses components from the ifcSQL project, so paths should be adjusted
+:: accordingly. Required tools include:
+:: - Microsoft SQL Server (with sqlcmd)
+:: - Visual Studio (with MSBuild)
+:: - WinSCP (for file transfer)
+::
+:: Update the variables in STEP 0 according to your environment.
+:: ========================================================================
 
 
-:: Step 1: Set path for files and tools
+:: STEP 0: USER CONFIGURATION (Edit these paths and credentials)
 
-set "SLN_FILE=C:\Users\giorgia\Desktop\Publications\2025\EC3\SQLArena\IfcSQL_Arena\IfcSharpApps\IfcSql\from_ifcSQL\from_ifcSQL.sln"
-set "MSBUILD_PATH=C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Current\Bin\amd64\MSBuild.exe"
-set "EXE_FILE=C:\Users\giorgia\Desktop\Publications\2025\EC3\SQLArena\IfcSQL_Arena\IfcSharpApps\IfcSql\from_ifcSQL\bin\Release\from_ifcSQL_IFC4X3_ADD2.exe"
+:: SQL Server
+set "SQLCMD_PATH=C:\Path\To\sqlcmd.exe"
+set "SQL_SERVER=YourSQLServer"
+set "SQL_DATABASE=ifcSQL"
 
-echo Compiling the .sln file...
-"%MSBUILD_PATH%" "%SLN_FILE%" /t:Build /p:Configuration=Release
-if errorlevel 1 (
-    echo  Error during solution compilation. Script execution aborted.
+:: Solution and Build Tools
+set "SLN_FILE=C:\Path\To\Your\Project\from_ifcSQL.sln"
+set "MSBUILD_PATH=C:\Path\To\MSBuild.exe"
+set "EXE_FILE=C:\Path\To\Built\Executable\from_ifcSQL_IFC4X3_ADD2.exe"
+
+:: SQL script
+set "SQL_FILE1=C:\Path\To\Your\SQLScript\DatabaseUpdate.sql"
+
+:: IFC file and WinSCP settings
+set "FILE_LOCAL=C:\Path\To\IFCFile\SQLArena.ifc"
+set "FILE_REMOTE=/remote/server/path/"
+set "WINSCP_PATH=C:\Path\To\WinSCP\winscp.com"
+
+:: FTP credentials (Do NOT hardcode in public repositories!)
+set "SERVER_HOST=yourserverhost.com"
+set "USERNAME=yourusername"
+set "PASSWORD=yoursecretpassword"
+set "PORTA=21"    :: Default FTP port, change if needed
+
+
+:: STEP 1: Validate sqlcmd availability
+
+if not exist "%SQLCMD_PATH%" (
+    echo sqlcmd not found: %SQLCMD_PATH%
     pause
     exit /b 1
 )
 
-echo Compilation completed successfully.
+
+:: STEP 2: Execute SQL script
+
+echo Executing SQL script: %SQL_FILE1%
+"%SQLCMD_PATH%" -S %SQL_SERVER% -d %SQL_DATABASE% -E -i "%SQL_FILE1%"
+if errorlevel 1 (
+    echo Error executing SQL script: %SQL_FILE1%.
+    pause
+    exit /b 1
+)
 
 
+:: STEP 3: Build the Visual Studio solution
 
-:: Step 2: Execute the generated application
+echo Building the solution file...
+"%MSBUILD_PATH%" "%SLN_FILE%" /t:Build /p:Configuration=Release
+if errorlevel 1 (
+    echo Error building the solution. Exiting script.
+    pause
+    exit /b 1
+)
+echo Build completed successfully.
+
+
+:: STEP 4: Run the compiled executable
 
 if exist "%EXE_FILE%" (
-    echo Running the generated application..
+    echo Running the compiled application...
     "%EXE_FILE%"
     if errorlevel 1 (
         echo Error while running the application.
@@ -39,30 +84,13 @@ if exist "%EXE_FILE%" (
         exit /b 1
     )
 ) else (
-    echo Unable to find the generated executable: %EXE_FILE%
+    echo Executable not found: %EXE_FILE%
     pause
     exit /b 1
 )
 
 
-
-:: Step 3: Set variables for WinSCP file transfer
-
-:: Set the local and remote file paths
-set "FILE_LOCAL=C:\Users\giorgia\Desktop\Publications\2025\EC3\SQLArena\SQLArena.ifc"
-set "FILE_REMOTE=/Publications/2025/EC3/SQLArena/Ifc/"
-set "WINSCP_PATH=C:\Program Files (x86)\WinSCP\winscp.com"
-
-:: Set the FTP server connection parameters
-:: The value are not written due to privacy. Replace the values with your own
-set "SERVER_HOST=yourserverhost.com"
-set "USERNAME=yourusername"
-set "PASSWORD=yoursecretpassword"
-set "PORTA=yourserverport" 
-
-
-
-:: Step 4: Execute direct file transfer using WinSCP
+:: STEP 5: Transfer the updated IFC file via WinSCP
 
 "%WINSCP_PATH%" ^
   /command ^
